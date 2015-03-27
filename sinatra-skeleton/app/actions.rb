@@ -5,11 +5,15 @@ get '/' do
   erb :index
 end
 
-get '/dashboard' do
-  erb:'forms/dashboard'
+get '/submit' do
+  erb:'submit'
 end
 
-post '/dashboard' do
+get '/vote' do
+  erb:'/vote'
+end
+
+post '/submit' do
   title = params[:title]
   description = params[:description]
 
@@ -28,6 +32,3 @@ post '/dashboard' do
   # end
 end
 
-post '/vote' do
-  
-end
