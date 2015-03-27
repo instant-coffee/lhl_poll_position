@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>Poll Position</title>
+
+     <!-- Included CSS Files (Compressed) -->
+    <!-- <link rel="stylesheet" href="stylesheets/bootstrap-3.3.4-dist/css/bootstrap.min.css"> -->
+   
+    <!-- Custom styles for this template -->
+    <!-- <link href="stylesheets/bootstrap-3.3.4-dist/css/jumbotron-narrow.css" rel="stylesheet"> -->
+
+
+  </head>
+  
+  <body>
+  
+    <div class="container">
+      <div class="header clearfix">
+       <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">About</a></li>
+            <li role="presentation"><a href="#">Voting</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="modal fade" id="login_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+              <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+      <div class="jumbotron">
+        <h1>Poll Position</h1>
+        <p class="lead">Hello folks!.... its that time of the year, when we are given the opportunity to scream about our wild and magnificient web app ideas.so what are we waiting for...go ahead and fetch all the thrilling ideas that are in the far corner of your brains and type them below</p>
+      </div>
+      <% if @idea && @idea.errors.any? %>
+        <div>
+          <strong>BAD Idea!!:</strong>
+            <ul>
+              <% @idea.errors.full_messages.each do |idea| %>
+                <li><%= idea %></li>
+              <% end %>
+            </ul>
+        </div>
+      <% end %>
+      <div class="col-md-12"> 
+        <form>
+          <div class="form-group">
+            <label for="project-ideas">Project Ideas!!!</label>
+            <input id="title" type="text" name="title" class="form-control" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="decribe-idea">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Tell us more"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="form_submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div id="idea-list">
+      <ul>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // $('#login_modal').modal('show');
+
+        // ajax for form submission
+        $('#form_submit').click(function(e) {
+          e.preventDefault();
+          var title = $('#title').val();
+          var desc = $('#description').val();
+          console.log('title', title);
+          console.log('desc', desc);
+
+          $.ajax({
+            url: '/dashboard',
+            method: 'POST',
+            data: {
+              title: title,
+              description: desc
+            }
+          }).done(function(returnData) {
+            console.log('data from server', returnData);
+            $('#idea-list ul').append('<li>Title:'+ returnData.title +'</li>')
+              .append('<li>desription:'+ returnData.description +'</li>')
+              .append('<br>');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
