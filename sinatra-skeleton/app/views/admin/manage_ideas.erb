@@ -37,7 +37,19 @@
         <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
           <h4 class="panel-title">
             <%= idea.title %> by: <%= idea.author %>
-            <span class="check"><input type="checkbox"></span>
+            <div class="btn-group drop">
+              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="caret "></span>
+              </button>
+            <ul class="dropdown-menu" role="menu">
+               <li><a href="#">Edit Title</a></li>
+               <li><a href="#">Edit Description</a></li>
+               <li><a href="#">Select for Finals</a></li>
+               <li><a href="#">Remove</a></li>
+            </ul>
+           </div>
+    <!-- ended button --> 
+            <span class="badge">14</span>
           </h4>
         </div>
         <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -49,7 +61,8 @@
     </div>
     <% @id += 1 %>
     <% end %>
-    <button id="button" type="button" class="btn btn-primary btn-lg">Submit</button>
+    <button type="button" class="btn danger btn-success btn-lg">Start Voting</button>
+    <button type="button" class="btn danger btn-danger btn-lg">End Voting</button>
   </div>
 
 </html>
