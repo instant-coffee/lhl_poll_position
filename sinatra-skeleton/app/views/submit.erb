@@ -71,18 +71,21 @@
         </form>
       </div>
     </div>
-    <div id="idea-list">
-      <ul>
-      </ul>
+    <div class="container" style="margin-top: 30px;">
+     <div id="idea-list">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        </div>
+      </div>
     </div>
+    
     <script type="text/javascript">
       $(document).ready(function() {
-        var author
-        $('#login_modal').modal({
-         backdrop: 'static',
-         keyboard: false
-        });
-        
+        var author;
+        // $('#login_modal').modal({
+        //  backdrop: 'static',
+        //  keyboard: false
+        // });//modal
+
         $('#login_modal').modal('show');
 
         $('#name_submit').click(function(e) {
@@ -91,7 +94,7 @@
           console.log('name:', author);
 
           $('#login_modal').modal('hide');
-        });
+        });//name_submit click
 
         // ajax for form submission
         $('#idea_submit').click(function(e) {
@@ -110,13 +113,31 @@
               title: title,
               description: desc
             }
-          }).done(function(returnData) {
+          })//ajax
+          .done(function(returnData) 
+          {
             console.log('data from server', returnData);
-            $('#idea-list ul').append('<li>Title:'+ returnData.title +'</li>')
-              .append('<li>desription:'+ returnData.description +'</li>')
-              .append('<br>');
-          });
-        });
+            $('#accordion').append(
+              '<div class="panel panel-default"> \
+               <div class="panel-heading" role="tab" id="headingOne"> \
+                  <h4 class="panel-title"> \
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">' + returnData.title + 
+                    '</a> \
+                    <span class="check"><input type="checkbox"></span> \
+                  </h4> \
+                </div> \
+              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"> \
+                <div class="panel-body"> \
+                ' + returnData.description + 
+                '</div> \
+              </div> \
+            </div>'
+            );//append
+          });//done
+        });//#idea_submit
+        // $(window).bind('beforeunload', function() {
+        //   return "WHOA! That's all you got? If you leave now, your idea's will be saved, but you won't be able to see them again until voting time....";
+        // });
       });
     </script>
   </body>
