@@ -15,7 +15,7 @@ end
 
 get '/vote' do
   @ideas = Idea.all
-  erb:'/vote'
+  erb:'user/vote'
 end
 
 post '/submit' do
