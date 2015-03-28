@@ -13,6 +13,10 @@ get '/vote' do
   erb:'/vote'
 end
 
+get '/admin' do
+  erb:'/admin'
+end
+
 post '/submit' do
   title = params[:title]
   description = params[:description]
