@@ -4,7 +4,7 @@ class CreateDb < ActiveRecord::Migration
       t.string :author
       t.string :title
       t.string :description
-      t.integer :votes
+      t.integer :votes 
     end
 
     create_table :students do |t|
