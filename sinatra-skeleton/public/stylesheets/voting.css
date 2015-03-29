@@ -9,9 +9,6 @@ span.name {
   padding-left: 20px;
 }
 
-.btn {
-  padding-right: 20px;
-}
 
 .well .row{
   padding-right: 10px;
@@ -33,3 +30,34 @@ h1 {
 body {
   background-image: url(../img/ppbg.jpg);
 }
+
+/* styles for Admin Page */ 
+
+.drop {
+  float: right;
+}
+
+.danger {
+  margin-top: 20px;
+}
+
+.badge {
+  float: right;
+  margin-right: 5px;
+}
+
+
+
+
+/* Groups Styles */ 
+
+.list-group {
+  padding-top: 20px;
+}
+
+.btn {
+  padding: 0 20px;
+}
+
+
+

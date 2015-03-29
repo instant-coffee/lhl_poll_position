@@ -17,6 +17,22 @@ get '/admin' do
   erb:'/admin'
 end
 
+get '/groups' do
+  erb:'/groups'
+end
+
+get '/final' do
+  erb:'/final'
+end
+
+get '/about' do
+  erb:'/about'
+end
+
+get '/landing' do
+  erb:'/landing'
+end
+
 post '/submit' do
   title = params[:title]
   description = params[:description]
