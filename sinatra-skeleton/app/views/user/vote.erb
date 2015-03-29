@@ -39,13 +39,14 @@
     <h1>Cast Your Vote</h1>
         <!-- collapsible group --> 
     <% @id = 1 %>
-    <% @ideas.each do |idea| %>  
+    <% @ideas.each do |idea| %> 
+    <form method='POST' action="/cast"> 
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
           <h4 class="panel-title">
             <%= idea.title %> by: <%= idea.author %>
-            <span class="check"><input type="checkbox"></span>
+            <span class="check"><input type="checkbox" name="vote" value="<%= idea.title %>"></span>
           </h4>
         </div>
         <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -57,7 +58,7 @@
     </div>
     <% @id += 1 %>
     <% end %>
-    <button id="button" type="button" class="btn btn-primary btn-lg">Submit</button>
+    <button id="button" type="submit" value='vote_click' class="btn btn-warning btn-lg">VOTE</button>
   </div>
   <script type="text/javascript">
     $(document).ready(function(){
