@@ -20,8 +20,20 @@ get '/about' do
 end
 
 post '/cast' do
-  @voted = params['submitvote']
+  # @test = params[:votes].class
+  # binding.pry
+  # puts @test 
+  # .each do|key, val| 
+  #  val.class
+ # end
+ params[:votes].each do |key, val|
+   idea =  Idea.find(key.to_sym)
+   if val == "on"
+    idea.votes += 1
+    idea.save
+  end
   erb:'user/cast'
+end
 end
 
 # # # Admin Pages # # #

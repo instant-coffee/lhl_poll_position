@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150329040842) do
     t.string  "author"
     t.string  "title"
     t.string  "description"
-    t.integer "votes"
+    t.integer "votes",       default: 0
     t.boolean "final",       default: false
   end
 
