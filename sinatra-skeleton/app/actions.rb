@@ -20,12 +20,6 @@ get '/about' do
 end
 
 post '/cast' do
-  # @test = params[:votes].class
-  # binding.pry
-  # puts @test 
-  # .each do|key, val| 
-  #  val.class
- # end
  params[:votes].each do |key, val|
    idea =  Idea.find(key.to_sym)
    if val == "on"
