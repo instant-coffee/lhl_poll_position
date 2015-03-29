@@ -33,6 +33,10 @@ get '/landing' do
   erb:'/landing'
 end
 
+get '/whoareyou' do
+  erb:'whoareyou'
+end
+
 post '/submit' do
   title = params[:title]
   description = params[:description]

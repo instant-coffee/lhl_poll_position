@@ -19,12 +19,24 @@ body {
 
 }
 
+a {
+    color: #fff;
+}
+
+a:hover {
+    background-color: #fff;
+    opacity: 0.5;
+}
+
 h1, h2 {
+    font-family: 'Montserrat', sans-serif;
     color: white;
 }
 
 p {
+    font-family: 'Raleway', sans-serif;
     color: white;
+    letter-spacing: 1px;
 }
 .header-image {
     display: table;
