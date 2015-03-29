@@ -21,14 +21,20 @@ end
 
 post '/cast' do
  params[:votes].each do |key, val|
-   idea =  Idea.find(key.to_sym)
+   idea =  Idea.find(key)
    if val == "on"
     idea.votes += 1
     idea.save
-  end
-  erb:'user/cast'
+   end
+ end
+ redirect '/results'
 end
+
+get '/results' do
+  @ideas = Idea.where("votes > '0'")
+  erb:'user/result'
 end
+
 
 # # # Admin Pages # # #
 get '/admin/ideas' do

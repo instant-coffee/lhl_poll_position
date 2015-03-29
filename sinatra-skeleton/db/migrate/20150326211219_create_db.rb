@@ -4,6 +4,7 @@ class CreateDb < ActiveRecord::Migration
       t.string :author
       t.string :title
       t.string :description
+      t.integer :votes 
       t.integer :votes, default: 0
     end
 
