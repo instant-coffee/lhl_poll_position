@@ -46,7 +46,7 @@
         <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
           <h4 class="panel-title">
             <%= idea.title %> by: <%= idea.author %>
-            <span class="check"><input type="checkbox" name="vote" value="<%= idea.title %>"></span>
+            <span class="check"><input type="checkbox" name="submitvote" value="<%= idea.title %>"></span>
           </h4>
         </div>
         <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -58,7 +58,7 @@
     </div>
     <% @id += 1 %>
     <% end %>
-    <button id="button" type="submit" value='vote_click' class="btn btn-warning btn-lg">VOTE</button>
+    <button id="button" type="submit" value='vote_click' class="btn btn-warning btn-lg">VOTE!</button>
   </div>
   <script type="text/javascript">
     $(document).ready(function(){

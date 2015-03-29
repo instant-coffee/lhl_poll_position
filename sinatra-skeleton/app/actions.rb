@@ -19,6 +19,11 @@ get '/about' do
   erb:'about'
 end
 
+post '/cast' do
+  @voted = params['submitvote']
+  erb:'user/cast'
+end
+
 # # # Admin Pages # # #
 get '/admin/ideas' do
   @ideas = Idea.all
