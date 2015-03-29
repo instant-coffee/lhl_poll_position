@@ -92,11 +92,23 @@
           e.preventDefault();
           author = $('#name').val();
           console.log('name:', author);
+          //ajax submission. Creates new Student
+          $.ajax({
+            url: '/students',
+            method: 'POST',
+            data: {
+              author: author,
+            }
+          }).done(function(returnData)
+        {
+          console.log('data from server', returnData);
+        });//ajax
 
           $('#login_modal').modal('hide');
-        });//name_submit click
+        });
+        //name_submit click
 
-        // ajax for form submission
+        // ajax submission. Creates new Idea
         $('#idea_submit').click(function(e) {
           e.preventDefault();
           var title = $('#title').val();
@@ -106,7 +118,7 @@
           console.log('name:', author);
 
           $.ajax({
-            url: '/submit',
+            url: '/ideas',
             method: 'POST',
             data: {
               author: author,
