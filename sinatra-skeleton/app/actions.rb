@@ -19,6 +19,23 @@ get '/about' do
   erb:'about'
 end
 
+post '/cast' do
+  # @test = params[:votes].class
+  # binding.pry
+  # puts @test 
+  # .each do|key, val| 
+  #  val.class
+ # end
+ params[:votes].each do |key, val|
+   idea =  Idea.find(key.to_sym)
+   if val == "on"
+    idea.votes += 1
+    idea.save
+  end
+  erb:'user/cast'
+end
+end
+
 # # # Admin Pages # # #
 get '/admin/ideas' do
   @ideas = Idea.all
