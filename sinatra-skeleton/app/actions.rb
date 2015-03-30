@@ -96,6 +96,32 @@ get '/delete_idea/:id' do
   redirect 'admin/ideas'
 end
 
+### Priya
+
+get '/admin/manage_ideas_test' do
+ @ideas = Idea.where("votes > 0").order(votes: :desc)
+ @students = Student.all
+ erb:'admin/manage_ideas_test'
+end
+
+
+post '/admin/manage_ideas_test' do
+  params.each do |k,v| 
+   student= Student.find(k) 
+    student.idea_id=v[0] 
+    student.save
+  end
+  redirect '/admin/final_groups'
+
+end
+
+Priya Thanya [5:16 PM]
+get '/admin/final_groups' do
+  @ideas = Idea.where("votes > 0").order(votes: :desc).limit(6)
+
+erb:'admin/final_groups'
+end
+
 
 
 
