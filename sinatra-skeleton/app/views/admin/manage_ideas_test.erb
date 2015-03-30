@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="">
+ <meta name="author" content="">
+ <title>Poll Position Groups</title>
+ <!-- Custom CSS -->
+ <link href="/stylesheets/voting.css" rel="stylesheet">
+</head>
+
+<body>
+ <div class="container">
+
+
+   <!-- nav --> 
+   <div class="header clearfix">
+    <nav>
+     <ul class="nav nav-pills pull-right">
+       <li role="presentation"><a href="#">Home</a></li>
+       <li role="presentation"><a href="/about">About</a></li>
+       <li role="presentation"><a href="#">View Final Groups</a></li>
+     </ul>
+   </nav>
+ </div>
+ <!-- nav end --> 
+
+ <div class="row">
+   <h1>
+     Winners!!! 
+   </h1>
+   
+
+   <!-- collapsible groop --> 
+   <% @id = 1 %>
+   <% @ideas.each do |idea| %>
+   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+     <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
+        <h4 class="panel-title">
+         <%= idea.id%>
+
+         <%= idea.title %> 
+
+         <small>(by: <%= idea.author %>)</small>
+         <span class="badge"><%= idea.votes %> votes</span>
+       </h4>
+     </div>
+     <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+       <div class="panel-body">
+        <%= idea.description %>
+      </div>
+    </div>
+  </div>
+  <% @id += 1 %>
+  <% end %> 
+  <h3>Please assign project ids to students</h3>
+  <form method="post" action="/admin/manage_ideas_test">
+   <ul class="list-group">
+     <% @students.each do |student| %>
+     <li class="list-group-item" name="" ><%= student.name %><!--added button -->
+       <div class="btn-group drop">
+         <input class="form-control input-s form"  type="integer" placeholder="<%= student.idea_id %> " name="<%=student.id%>[]">
+       </div> <!-- ended button --> 
+     </li>
+     <% end %> 
+
+
+   </ul>
+
+
+   <button id="button" type="submit" class="btn btn-primary btn-lg" >Save Groups</button>
+ </form>
+</div> <!--end .row -->
+
+
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+<!-- rough display -->
+<!-- 
+<html>
+<head>
+</head>
+<body>
+
+<h1> welcome </h1>
+
+<% @ideas.each do |idea| %>
+
+<div class="idea">
+<h3><%= idea.id%> <%= idea.title %> <small>(by: <%= idea.author %>)</small></h3>
+
+<p> 
+<%= idea.description %>
+</p>
+</div>
+<% end %> 
+
+<h1> Students </h1>
+<form method="get" action="/admin/manage_ideas_test2">
+<% @students.each do |student| %>
+
+<div class="groups">
+<h3>
+    <%= student.name %>
+    <input name="<%= student.id %>" type="text" value="<%= student.id %>">  
+  <small>
+    Group: <input type="text" name="idea_id<%= student.id %>">
+  </small>
+</h3>
+</div>
+
+<% end %> 
+<button id="button" type="submit" class="btn btn-primary btn-lg">Assign Groups</button>
+</form>
+
+
+</body>
+</html>
+ -->
