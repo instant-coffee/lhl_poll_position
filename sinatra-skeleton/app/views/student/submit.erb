@@ -1,0 +1,128 @@
+<div class="container">
+  <ol class="breadcrumb">
+    <li class="active">Submit Ideas</li>
+    <li><a href="/student/vote">Vote Projects</a></li>
+    <li><a href="/final">Final Groups</a></li>
+  </ol>
+    <div class="modal fade" id="login_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">What's yo' name?</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <input type="text" id="name" name="name">
+              <button type="button" id="name_submit" class="btn btn-primary">Send it! >>></button>
+            </form>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <h1 class="submith1">Submit Your Ideas</h1>
+    <% if @idea && @idea.errors.any? %>
+      <div>
+        <strong>BAD Idea!!:</strong>
+          <ul>
+            <% @idea.errors.full_messages.each do |idea| %>
+              <li><%= idea %></li>
+            <% end %>
+          </ul>
+      </div>
+    <% end %>
+    <div class="col-md-12"> 
+      <form>
+        <div class="form-group">
+          <label for="project-ideas">Give It A Time</label>
+          <input id="title" type="text" name="title" class="form-control" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <label for="decribe-idea">Elaborate</label>
+          <textarea class="form-control" id="description" name="description" rows="3" placeholder="Tell us more"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="idea_submit">Enlighten Us</button>
+      </form>
+    </div>
+  </div>
+  <div class="container" style="margin-top: 30px;">
+   <div id="idea-list">
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      </div>
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var author;
+      // $('#login_modal').modal({
+      //  backdrop: 'static',
+      //  keyboard: false
+      // });//modal
+
+      $('#login_modal').modal('show');
+
+      $('#name_submit').click(function(e) {
+        e.preventDefault();
+        author = $('#name').val();
+        console.log('name:', author);
+        //ajax submission. Creates new Student
+        $.ajax({
+          url: '/student_name',
+          method: 'POST',
+          data: {
+            author: author,
+          }
+        }).done(function(returnData)
+      {
+        console.log('data from server', returnData);
+      });//ajax
+
+        $('#login_modal').modal('hide');
+      });
+      //name_submit click
+
+      // ajax submission. Creates new Idea
+      $('#idea_submit').click(function(e) {
+        e.preventDefault();
+        var title = $('#title').val();
+        var desc = $('#description').val();
+        console.log('title:', title);
+        console.log('desc:', desc);
+        console.log('name:', author);
+
+        $.ajax({
+          url: '/submit_idea',
+          method: 'POST',
+          data: {
+            author: author,
+            title: title,
+            description: desc
+          }
+        })//ajax
+        .done(function(returnData) 
+        {
+          console.log('data from server', returnData);
+          $('#accordion').append(
+            '<div class="panel panel-default"> \
+             <div class="panel-heading" role="tab" id="headingOne"> \
+                <h4 class="panel-title"> \
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">' + returnData.title + 
+                  '</a> \
+                </h4> \
+              </div> \
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"> \
+              <div class="panel-body"> \
+              ' + returnData.description + 
+              '</div> \
+            </div> \
+          </div>'
+          );//append
+        });//done
+      });//#idea_submit
+      // $(window).bind('beforeunload', function() {
+      //   return "WHOA! That's all you got? If you leave now, your idea's will be saved, but you won't be able to see them again until voting time....";
+      // });
+    });
+  </script>

@@ -10,11 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321144528) do
+ActiveRecord::Schema.define(version: 20150329040842) do
 
-  create_table "users", force: true do |t|
+  create_table "admins", force: true do |t|
     t.string "name"
     t.string "email"
+    t.string "password"
+  end
+
+  create_table "ideas", force: true do |t|
+    t.string  "author"
+    t.string  "title"
+    t.string  "description"
+    t.integer "votes",       default: 0
+    t.boolean "final",       default: false
+  end
+
+  create_table "students", force: true do |t|
+    t.string  "name"
+    t.integer "idea_id"
   end
 
 end

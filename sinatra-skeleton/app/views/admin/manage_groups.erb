@@ -1,0 +1,65 @@
+
+ <div class="container">
+
+
+   <!-- nav --> 
+   <div class="nav">
+    <nav>
+     <ul class="nav nav-pills pull-right">
+       <li role="presentation"><a href="#">Home</a></li>
+       <li role="presentation"><a href="/about">About</a></li>
+       <li role="presentation"><a href="#">View Final Groups</a></li>
+     </ul>
+   </nav>
+ </div>
+ <!-- nav end --> 
+
+ <div class="row">
+   <h1>
+     Winners!!! 
+   </h1>
+   
+
+   <!-- collapsible groop --> 
+   <% @id = 1 %>
+   <% @ideas.each do |idea| %>
+   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+     <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
+        <h4 class="panel-title">
+         <%= idea.title %> (ID: <%= idea.id %>)</br>
+         <small>(by: <%= idea.author %>)</small>
+         <span class="badge"><%= idea.votes %> votes</span>
+       </h4>
+     </div>
+     <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+       <div class="panel-body">
+        <%= idea.description %>
+      </div>
+    </div>
+  </div>
+  <% @id += 1 %>
+  <% end %> 
+  
+  <h3>Please assign project ids to students</h3>
+  <form method="post" action="/admin/manage_groups">
+   <ul class="list-group">
+     <% @students.each do |student| %>
+     <li class="list-group-item" name="" ><%= student.name %><!--added button -->
+       <div class="btn-group drop">
+         <span class="badge"><input type="integer" value="<%= student.idea_id %> " name="<%=student.id%>[]"></span>
+       </div> <!-- ended button --> 
+     </li>
+     <% end %> 
+    </ul>
+  
+
+
+   
+
+
+   <button id="button" type="submit" class="btn btn-primary btn-lg" >Save Groups</button>
+ </form>
+</div> <!--end .row -->
+

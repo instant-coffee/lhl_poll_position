@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-  <link rel="stylesheet" href="/stylesheets/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
-  <link rel="stylesheet" href="/stylesheets/application.css">
+  <meta charset="utf-8" />
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/javascript/application.js"></script>
+  <meta name="viewport" content="width=device-width" />
 
-  <title></title>
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+  <link href="/stylesheets/stylish-portfolio.css" rel="stylesheet">
+
+  <link href="/stylesheets/voting.css" rel="stylesheet">
+
+   <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<title>Poll Position</title>
 </head>
 <body>
+
   <%= yield %>
+
 </body>
 </html>

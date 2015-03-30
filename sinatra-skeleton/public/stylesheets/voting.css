@@ -1,0 +1,63 @@
+.container {
+/* vertical-align: center;*/
+ padding-right: 20px;
+}
+
+span.name {
+ padding-left: 20px;
+}
+
+
+.well .row{
+ padding-right: 10px;
+}
+
+h1 {
+ padding-left: 13px;
+}
+
+.button {
+ padding-left: 30px;
+
+}
+
+.check {
+ float: right;
+}
+
+body {
+ background-image: url(../img/ppbg.jpg);
+}
+
+/* styles for Admin Page */
+
+.drop {
+ float: right;
+}
+
+.danger {
+ margin-top: 20px;
+}
+
+.badge {
+ float: right;
+ margin-right: 5px;
+}
+
+/* Groups Styles */
+
+.list-group {
+ padding-top: 20px;
+}
+
+.btn {
+ padding: 0 20px;
+}
+
+.final{
+  padding-left: 10px;
+}
+
+#student_groups {
+  display: inline;
+}

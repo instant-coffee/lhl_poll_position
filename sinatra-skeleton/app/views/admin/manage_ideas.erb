@@ -1,0 +1,42 @@
+<div class="container"> 
+  <ol class="breadcrumb">
+    <li class="active" href="/admin/ideas">Manage Ideas</li>
+    <li><a href="/admin/manage_groups">Manage Groups</a></li>
+    <li><a href="/final">Final Groups</a></li>
+  </ol>
+  <h1>The Chopping Block</h1>
+  <!-- collapsible group --> 
+  <% @id = 1 %>
+  <% @ideas.each do |idea| %>  
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
+        <h4 class="panel-title">
+          <%= idea.title %> 
+          <div class="btn-group drop">
+            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+             <li><a href="/update_idea/<%= idea.id %>">Edit</a></li>
+             <li><a href="/add_final/<%= idea.id %>">Select for Finals</a></li>
+             <li><a href="/delete_idea/<%= idea.id %>">Remove</a></l>
+             </ul>
+           </div>
+           <!-- ended button --> 
+         </h4>
+         <h4 class="panel-title">
+          <small>by: <%= idea.author %>
+          <span class="final">Included in Final?: <%= idea.final %></span></small>
+        </h4>
+      </div>
+      <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <%= idea.description %> 
+        </div>
+      </div>
+    </div>  
+  </div>
+  <% @id += 1 %>
+  <% end %>
+</div>
