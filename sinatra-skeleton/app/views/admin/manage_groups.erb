@@ -1,125 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Poll Position</title>
-    <!-- Custom CSS -->
-    <link href="/stylesheets/voting.css" rel="stylesheet">
-</head>
+ <div class="container">
 
-<body>
-    <div class="container">
-      <!-- nav --> 
-       <div class="header clearfix">
-       <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">View Final Groups</a></li>
-          </ul>
-        </nav>
-      </div>
-      <!-- nav end --> 
-    <h1>
-        Determine Winners / Assign Projects
-    </h1>
-        <!-- collapsible groop --> 
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Project Name
-        </a>
 
-        <!--added button -->
-        <div class="btn-group drop">
-          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret "></span>
-          </button>
-            <ul class="dropdown-menu" role="menu">
-               <li><a href="#">Project 1</a></li>
-               <li><a href="#">Project 2</a></li>
-               <li><a href="#">Project 3</a></li>
-               <li><a href="#">Project 4</a></li>
-            </ul>
-          </div><!-- ended button --> 
-      <span class="badge">14</span>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-         Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.
-         Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends, like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.
+   <!-- nav --> 
+   <div class="header clearfix">
+    <nav>
+     <ul class="nav nav-pills pull-right">
+       <li role="presentation"><a href="#">Home</a></li>
+       <li role="presentation"><a href="/about">About</a></li>
+       <li role="presentation"><a href="#">View Final Groups</a></li>
+     </ul>
+   </nav>
+ </div>
+ <!-- nav end --> 
+
+ <div class="row">
+   <h1>
+     Winners!!! 
+   </h1>
+   
+
+   <!-- collapsible groop --> 
+   <% @id = 1 %>
+   <% @ideas.each do |idea| %>
+   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+     <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
+        <h4 class="panel-title">
+         <%= idea.title %> (ID: <%= idea.id %>)</br>
+         <small>(by: <%= idea.author %>)</small>
+         <span class="badge"><%= idea.votes %> votes</span>
+       </h4>
+     </div>
+     <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+       <div class="panel-body">
+        <%= idea.description %>
       </div>
     </div>
   </div>
-    <ul class="list-group">
-      <li class="list-group-item">Lachlan Mackenzie<!--added button -->
-        <div class="btn-group drop">
-          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret "></span>
-          </button>
-            <ul class="dropdown-menu" role="menu">
-               <li><a href="#">Project 1</a></li>
-               <li><a href="#">Project 2</a></li>
-               <li><a href="#">Project 3</a></li>
-               <li><a href="#">Project 4</a></li>
-               <li><a href="#">Remove from group</a></li>
-            </ul>
-          </div> <!-- ended button --> 
-      </li>
-      <li class="list-group-item">Nico Flojo<!--added button -->
-        <div class="btn-group drop">
-          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret "></span>
-          </button>
-            <ul class="dropdown-menu" role="menu">
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Remove</a></li>
-            </ul>
-          </div> <!-- ended button --> 
-      </li><li class="list-group-item">Patrick Stewart<!--added button -->
-        <div class="btn-group drop">
-          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret "></span>
-          </button>
-            <ul class="dropdown-menu" role="menu">
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Remove from group</a></li>
-            </ul>
-          </div> <!-- ended button --> 
-      </li><li class="list-group-item">Priya Ramanath<!--added button -->
-        <div class="btn-group drop">
-          <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret "></span>
-          </button>
-            <ul class="dropdown-menu" role="menu">
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Add to group</a></li>
-               <li><a href="#">Remove from group</a></li>
-            </ul>
-          </div> <!-- ended button --> 
-      </li>
+  <% @id += 1 %>
+  <% end %> 
+  
+  <h3>Please assign project ids to students</h3>
+  <form method="post" action="/admin/manage_groups">
+   <ul class="list-group">
+     <% @students.each do |student| %>
+     <li class="list-group-item" name="" ><%= student.name %><!--added button -->
+       <div class="btn-group drop">
+         <span class="badge"><input type="integer" value="<%= student.idea_id %> " name="<%=student.id%>[]"></span>
+       </div> <!-- ended button --> 
+     </li>
+     <% end %> 
     </ul>
-     <button type="button" class="btn danger btn-success btn-lg">Finish</button>
-    </div>
-    <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
+  
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
 
-</body>
+   
 
-</html>
+
+   <button id="button" type="submit" class="btn btn-primary btn-lg" >Save Groups</button>
+ </form>
+</div> <!--end .row -->
+

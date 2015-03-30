@@ -1,0 +1,36 @@
+   <div class="container">
+     <!--bread crumb -->
+     <div class="col-md-12">
+       <form action="/update_idea/<%= @idea.id %>" method="POST">
+         <div class="form-group">
+           <h1>Change Project Name</h1>
+           <input id="title" type="text" name="title" class="form-control" value="<%= @idea.title%>">
+         </div>
+         <div class="form-group">
+           <h1>Change Description Name</h1>
+           <textarea class="form-control" id="description" name="description" rows="3" value="<%= @idea.description%>"><%= @idea.description%></textarea>
+         </div>
+         <button type="submit" class="btn btn-primary btn-lg btn-block" id="idea_submit">Update</button>
+       </form>
+     </div>
+   </div>
+   <div class="container">
+    <div id="idea-list">
+     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+     </div>
+   </div>
+ </div>
+
+<!-- <head>
+
+  <title>Edit Idea</title>
+</head>
+
+<body>
+<form action="/update_idea/<%= @idea.id %>" method="POST">
+  <input type="text" name="title" value="<%= @idea.title%>">
+  <input rows="3" name="description" value="<%= @idea.description%>"></input>  
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html> -->

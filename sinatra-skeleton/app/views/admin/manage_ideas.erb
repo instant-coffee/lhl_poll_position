@@ -1,70 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    
-
-    </style>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Poll Position</title>
-
-    <!-- Custom CSS -->
-    <link href="/stylesheets/voting.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>  
-  <div class="container">
-    <h1>The Chopping Block</h1>
-        <!-- collapsible group --> 
-    <% @id = 1 %>
-    <% @ideas.each do |idea| %>  
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
-          <h4 class="panel-title">
-            <%= idea.title %> 
-            <%= idea.final %>
-            <div class="btn-group drop">
-              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+<div class="container"> 
+  <ol class="breadcrumb">
+    <li class="active" href="/admin/ideas">Manage Ideas</li>
+    <li><a href="/admin/manage_groups">Manage Groups</a></li>
+    <li><a href="/final">Final Groups</a></li>
+  </ol>
+  <h1>The Chopping Block</h1>
+  <!-- collapsible group --> 
+  <% @id = 1 %>
+  <% @ideas.each do |idea| %>  
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
+        <h4 class="panel-title">
+          <%= idea.title %> 
+          <div class="btn-group drop">
+            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
               <span class="caret"></span>
-              </button>
+            </button>
             <ul class="dropdown-menu" role="menu">
-               <li><a href="/edit_idea/<%= idea.id %>">Edit</a></li>
-               <li><a href="/add_final/<%= idea.id %>">Select for Finals</a></li>
-               <li><a href="/delete_idea/<%= idea.id %>">Remove</a></l>
-            </ul>
+             <li><a href="/update_idea/<%= idea.id %>">Edit</a></li>
+             <li><a href="/add_final/<%= idea.id %>">Select for Finals</a></li>
+             <li><a href="/delete_idea/<%= idea.id %>">Remove</a></l>
+             </ul>
            </div>
-    <!-- ended button --> 
-          </h4>
-          <h4 class="panel-title">
-            by: <%= idea.author %>
-          </h4>
+           <!-- ended button --> 
+         </h4>
+         <h4 class="panel-title">
+          <small>by: <%= idea.author %>
+          <span class="final">Included in Final?: <%= idea.final %></span></small>
+        </h4>
+      </div>
+      <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <%= idea.description %> 
         </div>
-        <div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            <%= idea.description %> 
-          </div>
-        </div>
-      </div>  
-    </div>
-    <% @id += 1 %>
-    <% end %>
-    <button type="button" class="btn danger btn-success btn-lg">Start Voting</button>
-    <button type="button" class="btn danger btn-danger btn-lg">End Voting</button>
+      </div>
+    </div>  
   </div>
-
-</html>
+  <% @id += 1 %>
+  <% end %>
+</div>

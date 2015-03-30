@@ -1,42 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    
-
-    </style>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Poll Position</title>
-
-    <!-- Custom CSS -->
-    <link href="/stylesheets/voting.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>  
   <div class="container">
-   <div class="header clearfix">
-     <nav>
-        <ul class="nav nav-pills pull-right">
-          <li role="presentation"><a href="/vote">Voting</a></li>
-          <li role="presentation"><a href="">About</a></li>
-        </ul>
-      </nav>
-    </div>
-    <h1>Cast Your Vote</h1>
+   <ol class="breadcrumb">
+      <li class="active">Submit Ideas</li>
+      <li><a href="/student/vote">Vote Projects</a></li>
+      <li><a href="/final">Final Groups</a></li>
+    </ol>
+    <h1>Cast Your Votes</h1>
         <!-- collapsible group --> 
     <% @id = 1 %>
     <% @ideas.each do |idea| %> 
@@ -45,7 +13,8 @@
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
           <h4 class="panel-title">
-            <%= idea.title %> by: <%= idea.author %>
+            <%= idea.title %> </br>
+            <small>by: <%= idea.author %></small>
             <span class="check"><input type="checkbox" name="votes[<%= idea.id %>]" ></span>
           </h4>
         </div>
@@ -74,6 +43,3 @@
       });
     });
   </script>
-</body>
-
-</html>

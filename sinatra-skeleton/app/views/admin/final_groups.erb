@@ -1,0 +1,50 @@
+ <div class="container">
+  <!-- nav --> 
+  <div class="header clearfix">
+   <nav>
+    <ul class="nav nav-pills pull-right">
+      <li role="presentation"><a href="#">Home</a></li>
+      <li role="presentation"><a href="#">About</a></li>
+      <li role="presentation"><a href="#">Manage Groups</a></li>
+    </ul>
+  </nav>
+</div>
+<!-- nav end --> 
+<h1>
+  Final Midterm Teams
+</h1>
+<!-- collapsible group --> 
+<% @id = 1 %>
+<% @ideas.each do |idea| %>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+   <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#<%= @id %>">
+    <h4 class="panel-title">
+     
+     <%= idea.title %> 
+     <small>(by: <%= idea.author %>)</small>
+     <span class="badge"><%= idea.votes %> votes</span>
+     <!--added button -->
+     <div class="btn-group drop">
+      <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="caret "></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+       <li><a href="#">Edit Teams</a></li>
+       <li><a href="#">Remove</a></li>
+     </ul>
+   </div>
+   <!-- ended button --> 
+   
+ </h4>
+</div>
+<div id="<%= @id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+  <div class="panel-body">
+   student names list
+ </div>
+</div>
+</div>
+<% @id += 1 %>
+<% end %> 
+
+</div>
