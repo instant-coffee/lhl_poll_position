@@ -1,0 +1,22 @@
+  <div class="container">
+      <!-- nav --> 
+
+      <!-- nav end --> 
+    <h1>
+        Groups and Projects Final Page
+    </h1>
+    <div class="container">
+      <!-- nav --> 
+     <% @ideas.each do |idea| %>
+      <div class="panel panel-default">
+        <div class="panel-heading"><%= idea.title %></div>
+  <!-- List group -->
+      <% matches = @students.select { |s| s["idea_id"] == idea.id } %>
+        <ul class="list-group">
+        <% matches.each do |student| %>
+          <li class="list-group-item"><%= student["name"] %></li>
+        <% end %>
+        </ul>
+      </div>
+     <% end %>
+    </div>
