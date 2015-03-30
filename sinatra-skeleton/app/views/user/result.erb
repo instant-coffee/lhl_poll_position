@@ -1,0 +1,12 @@
+<body>
+  <h1>THANKS FOR VOTING</h1>
+  <div class="container">
+    <% @ideas.each do |idea| %>
+    <div>
+      <h1><%= idea.title %></h1>
+      <p><%= idea.description %></p>
+      <p><%= idea.votes %></p>
+    </div>
+    <% end %>
+  </div>
+</body>
